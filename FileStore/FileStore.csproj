@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\images\cards\1 of clubs.png" />
+    <Resource Include="Resources\images\cards\1 of diamonds.png" />
+    <Resource Include="Resources\images\cards\1 of hearts.png" />
+    <Resource Include="Resources\images\cards\1 of spades.png" />
+    <Resource Include="Resources\images\cards\10 of clubs.png" />
+    <Resource Include="Resources\images\cards\10 of diamonds.png" />
+    <Resource Include="Resources\images\cards\10 of hearts.png" />
+    <Resource Include="Resources\images\cards\10 of spades.png" />
+    <Resource Include="Resources\images\cards\11 of clubs.png" />
+    <Resource Include="Resources\images\cards\11 of diamonds.png" />
+    <Resource Include="Resources\images\cards\11 of hearts.png" />
+    <Resource Include="Resources\images\cards\11 of spades.png" />
+    <Resource Include="Resources\images\cards\12 of clubs.png" />
+    <Resource Include="Resources\images\cards\12 of diamonds.png" />
+    <Resource Include="Resources\images\cards\12 of hearts.png" />
+    <Resource Include="Resources\images\cards\12 of spades.png" />
+    <Resource Include="Resources\images\cards\2 of clubs.png" />
+    <Resource Include="Resources\images\cards\2 of diamonds.png" />
+    <Resource Include="Resources\images\cards\2 of hearts.png" />
+    <Resource Include="Resources\images\cards\2 of spades.png" />
+    <Resource Include="Resources\images\cards\3 of clubs.png" />
+    <Resource Include="Resources\images\cards\3 of diamonds.png" />
+    <Resource Include="Resources\images\cards\3 of hearts.png" />
+    <Resource Include="Resources\images\cards\3 of spades.png" />
+    <Resource Include="Resources\images\cards\4 of clubs.png" />
+    <Resource Include="Resources\images\cards\4 of diamonds.png" />
+    <Resource Include="Resources\images\cards\4 of hearts.png" />
+    <Resource Include="Resources\images\cards\4 of spades.png" />
+    <Resource Include="Resources\images\cards\5 of clubs.png" />
+    <Resource Include="Resources\images\cards\5 of diamonds.png" />
+    <Resource Include="Resources\images\cards\5 of hearts.png" />
+    <Resource Include="Resources\images\cards\5 of spades.png" />
+    <Resource Include="Resources\images\cards\6 of clubs.png" />
+    <Resource Include="Resources\images\cards\6 of diamonds.png" />
+    <Resource Include="Resources\images\cards\6 of hearts.png" />
+    <Resource Include="Resources\images\cards\6 of spades.png" />
+    <Resource Include="Resources\images\cards\7 of clubs.png" />
+    <Resource Include="Resources\images\cards\7 of diamonds.png" />
+    <Resource Include="Resources\images\cards\7 of hearts.png" />
+    <Resource Include="Resources\images\cards\7 of spades.png" />
+    <Resource Include="Resources\images\cards\8 of clubs.png" />
+    <Resource Include="Resources\images\cards\8 of diamonds.png" />
+    <Resource Include="Resources\images\cards\8 of hearts.png" />
+    <Resource Include="Resources\images\cards\8 of spades.png" />
+    <Resource Include="Resources\images\cards\9 of clubs.png" />
+    <Resource Include="Resources\images\cards\9 of diamonds.png" />
+    <Resource Include="Resources\images\cards\9 of hearts.png" />
+    <Resource Include="Resources\images\cards\9 of spades.png" />
+    <Resource Include="Resources\images\cards\red_back.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ResourceCards.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceCards.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ResourceCards.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCards.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
