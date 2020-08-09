@@ -24,24 +24,74 @@
         </Grid.Background>
 
         <Grid Margin="0,0,230.8,8.4">
-            <StackPanel 
+            <StackPanel Name="roundOne" 
                 Width="400" Height="200" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" Background="#FF0F200E">
                 <Label Content="Round one" Foreground="#DDFFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
                 <TextBlock Text="The card is going to be REd or Black?" Foreground="White"
                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="102,0,101,0" />
-
-
-
                 <StackPanel Height="40" Grid.ColumnSpan="5" Margin="0,75,0,0" HorizontalAlignment="Center" Grid.Row="3" Name="sp1" Orientation="Horizontal"  >
                     <Button  FontSize="20" x:Name="Black_Button" Margin="0,0,50,0" Click="Button_Black" Content="BLACK" Background="Black"/>
                     <Button FontSize="20" x:Name="Red_Button" Margin="50,0,0,0" Click="Button_Red" Content="RED" HorizontalAlignment="Right" Background="#FFB73A3A"/>
                 </StackPanel>
-
-
             </StackPanel>
 
+            <StackPanel Visibility="Hidden" Name="roundTwo" 
+                Width="400" Height="200" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Background="#FF0F200E">
+                <Label Content="Round Two" Foreground="#DDFFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+                <TextBlock Text="The card is going to higher or lower?" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="102,0,101,0" />
+                <StackPanel  Height="40" Grid.ColumnSpan="5" Margin="0,75,0,0" HorizontalAlignment="Center" Grid.Row="3" Name="sp3" Orientation="Horizontal"  >
+                    <Button  FontSize="20" x:Name="Low_Button" Margin="0,0,50,0" Click="Low_Button_Click" Content="LOWER" Background="Black"/>
+                    <Button FontSize="20" x:Name="High_Button" Margin="50,0,0,0" Click="High_Button_Click" Content="HIGHER" HorizontalAlignment="Right" Background="#FFB73A3A"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Visibility="Hidden" Name="roundThree" 
+                Width="400" Height="200" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Background="#FF0F200E">
+                <Label Content="Round Two" Foreground="#DDFFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+                <TextBlock Text="The card is going to be between or outside your 2 Cards?" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,25,0" />
+                <StackPanel  Height="40" Grid.ColumnSpan="5" Margin="0,75,0,0" HorizontalAlignment="Center" Grid.Row="3" Name="sp4" Orientation="Horizontal">
+                    <Button  FontSize="20" x:Name="Between_Button" Margin="0,0,50,0" Click="Between_Button_Click"  Content="BETWEEN" Background="Black"/>
+                    <Button FontSize="20" x:Name="Outside_Button" Margin="50,0,0,0"  Click="Outside_Button_Click" Content="OUTSIDE" HorizontalAlignment="Right" Background="#FFB73A3A"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Visibility="Hidden" Name="roundFour" 
+                Width="400" Height="200" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Background="#FF0F200E">
+                <Label Content="Round Two" Foreground="#DDFFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+                <TextBlock Text="The card is going to repeat type ? ( spades ...)" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50,0,50,0" />
+                <StackPanel  Height="40" Grid.ColumnSpan="5" Margin="0,75,0,0" HorizontalAlignment="Center" Grid.Row="3" Name="sp5" Orientation="Horizontal">
+                    <Button  FontSize="20" x:Name="Yes_Type_Button" Margin="0,0,50,0" Click="Yes_Type_Button_Click" Content="Yes" Background="Black"/>
+                    <Button FontSize="20" x:Name="No_Type_Button" Margin="50,0,0,0"   Click="No_Type_Button_Click"  Content="No" HorizontalAlignment="Right" Background="#FFB73A3A"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Visibility="Hidden" Name="roundFive" 
+                Width="400" Height="200" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Background="#FF0F200E">
+                <Label Content="Round Two" Foreground="#DDFFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
+                <TextBlock Text="The card is going to repeat number?" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50,0,50,0" />
+                <StackPanel  Height="40" Grid.ColumnSpan="5" Margin="0,75,0,0" HorizontalAlignment="Center" Grid.Row="3" Name="sp6" Orientation="Horizontal">
+                    <Button  FontSize="20" x:Name="Yes_Number_Button" Margin="0,0,50,0" Click="Yes_Number_Button_Click"  Content="Yes" Background="Black"/>
+                    <Button FontSize="20" x:Name="No_Number_Button" Margin="50,0,0,0"   Click="No_Number_Button_Click" Content="No" HorizontalAlignment="Right" Background="#FFB73A3A"/>
+                </StackPanel>
+            </StackPanel>
+
+
             <Button Name="result" Visibility="Hidden"  HorizontalAlignment="Left" Margin="655,170,0,-0.4" VerticalAlignment="Top" />
+            <Button Content="Reset" HorizontalAlignment="Left" Margin="80,100,0,0" VerticalAlignment="Top" Width="75" Click="Reset_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="30" Margin="55,385,0,-211.4" VerticalAlignment="Top" Width="680" >
+                <ListBoxItem Name="debug1"></ListBoxItem>
+                <ListBoxItem Name="debugCards"></ListBoxItem>
+                <ListBoxItem Name="debug"></ListBoxItem>
+            </StackPanel>
 
 
 
@@ -49,11 +99,12 @@
         </Grid>
         <StackPanel  HorizontalAlignment="Center" Grid.Row="3" Name="sp2" Orientation="Horizontal" Background="#FF0F200E" Margin="10,14,258,-13.4" Grid.RowSpan="2"  >
             <Image Source="C:\Users\anton\Desktop\C#\PracticeDesktopApp\FileStore\Resources\images\cards\red_back.png"
-               HorizontalAlignment="Left" Height="171" Grid.Row="4" VerticalAlignment="Top" Width="114"  Margin="35,10,0,10"/>
-            <Image Name="cardDrawed" HorizontalAlignment="Left" Margin="35,10,0,10" Height="171"  Grid.Row="4" VerticalAlignment="Top" Width="117"/>
-            <Image Name="cardDrawed2" HorizontalAlignment="Left" Margin="35,10,0,10" Height="171"  Grid.Row="4" VerticalAlignment="Top" Width="117"/>
-            <Image Name="cardDrawed3" HorizontalAlignment="Left" Margin="35,10,0,10" Height="171"  Grid.Row="4" VerticalAlignment="Top" Width="117"/>
-            <Image Name="cardDrawed4" HorizontalAlignment="Left" Margin="35,10,0,10" Height="171"  Grid.Row="4" VerticalAlignment="Top" Width="117"/>
+               HorizontalAlignment="Left" Height="140" Grid.Row="4" VerticalAlignment="Top" Width="75"  Margin="35,10,0,10"/>
+            <Image Name="cardDrawed" HorizontalAlignment="Left" Margin="35,10,0,10" Height="140"  Grid.Row="4" VerticalAlignment="Top" Width="75"/>
+            <Image Name="cardDrawed2" HorizontalAlignment="Left" Margin="35,10,0,10" Height="140"  Grid.Row="4" VerticalAlignment="Top" Width="75"/>
+            <Image Name="cardDrawed3" HorizontalAlignment="Left" Margin="35,10,0,10" Height="140"  Grid.Row="4" VerticalAlignment="Top" Width="75"/>
+            <Image Name="cardDrawed4" HorizontalAlignment="Left" Margin="35,10,0,10" Height="140"  Grid.Row="4" VerticalAlignment="Top" Width="75"/>
+            <Image Name="cardDrawed5" HorizontalAlignment="Left" Margin="35,10,35,10" Height="140"  Grid.Row="4" VerticalAlignment="Top" Width="75"/>
         </StackPanel>
 
     </Grid>

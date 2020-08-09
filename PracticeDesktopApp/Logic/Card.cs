@@ -31,7 +31,7 @@ namespace TrainCards
         {
             return value;
         }
-        public string GetType()
+        public string GetCardType()
         {
             return type;
         }
@@ -40,7 +40,8 @@ namespace TrainCards
             return color;
         }
 
-        public string ToString()
+        
+        public override string ToString()
         {
             
             return "_"+value + "_of_"+ type;
