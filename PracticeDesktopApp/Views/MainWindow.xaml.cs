@@ -31,8 +31,17 @@ namespace PracticeDesktopApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            windowGame game = new windowGame();
+            TrainCardWindow game = new TrainCardWindow();
             game.Show();
+            Close();
+        }
+
+       
+
+        private void HangedMan_Click(object sender, RoutedEventArgs e)
+        {
+            hangedWindow window = new hangedWindow();
+            window.Show();
             Close();
         }
     }

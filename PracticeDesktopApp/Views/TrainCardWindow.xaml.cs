@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using PracticeDesktopApp.Views.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +20,10 @@ namespace PracticeDesktopApp.Views
     /// <summary>
     /// Lógica de interacción para windowGame.xaml
     /// </summary>
-    public partial class windowGame : Window
+    public partial class TrainCardWindow : Window
     {
         Game game;
-        public windowGame()
+        public TrainCardWindow()
         {
             game = new Game();
             InitializeComponent();
@@ -32,6 +34,11 @@ namespace PracticeDesktopApp.Views
         {
             debug1.Content = round;
             debugCards.Content = cards;
+        }
+        private void ShowGameOverModal()
+        {
+            ModalGameOver modal = new ModalGameOver();
+            modal.ShowDialog();
         }
 
         private void resetGame()
@@ -73,6 +80,7 @@ namespace PracticeDesktopApp.Views
                 result.Visibility = Visibility.Visible;
                 roundOne.Visibility = Visibility.Hidden;
                 roundTwo.Visibility = Visibility.Visible;
+                
 
             }
             else
@@ -80,6 +88,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
 
             }
 
@@ -110,6 +119,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
 
             }
         }
@@ -141,6 +151,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
 
             }
 
@@ -176,6 +187,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
 
             }
 
@@ -205,13 +217,14 @@ namespace PracticeDesktopApp.Views
                 result.Visibility = Visibility.Visible;
                 roundThree.Visibility = Visibility.Hidden;
                 roundFour.Visibility = Visibility.Visible;
-                UpdateDebug("Round : 3", game.GetProcess());
+               
             }
             else
             {
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
 
@@ -234,13 +247,14 @@ namespace PracticeDesktopApp.Views
                 result.Visibility = Visibility.Visible;
                 roundThree.Visibility = Visibility.Hidden;
                 roundFour.Visibility = Visibility.Visible;
-                UpdateDebug("Round : 3", game.GetProcess());
+
             }
             else
             {
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
 
@@ -268,6 +282,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
 
@@ -290,13 +305,14 @@ namespace PracticeDesktopApp.Views
                 result.Visibility = Visibility.Visible;
                 roundFour.Visibility = Visibility.Hidden;
                 roundFive.Visibility = Visibility.Visible;
-                UpdateDebug("Round : 3", game.GetProcess());
+
             }
             else
             {
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
 
@@ -317,7 +333,7 @@ namespace PracticeDesktopApp.Views
                 result.Content = "You passed";
                 result.Visibility = Visibility.Visible;
                 roundFive.Visibility = Visibility.Hidden;
-                UpdateDebug("Round : 3", game.GetProcess());
+               
 
             }
             else
@@ -325,6 +341,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
 
@@ -347,7 +364,7 @@ namespace PracticeDesktopApp.Views
                 result.Content = "You passed";
                 result.Visibility = Visibility.Visible;
                 roundFive.Visibility = Visibility.Hidden;
-                UpdateDebug("Round : 3", game.GetProcess());
+                
 
             }
             else
@@ -355,6 +372,7 @@ namespace PracticeDesktopApp.Views
                 result.Background = Brushes.Red;
                 result.Content = "You Failed";
                 result.Visibility = Visibility.Visible;
+                ShowGameOverModal();
             }
         }
     }

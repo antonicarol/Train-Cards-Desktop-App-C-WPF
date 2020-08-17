@@ -1,0 +1,13 @@
+﻿<Window x:Class="PracticeDesktopApp.Views.Dialogs.ModalGameOver"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticeDesktopApp.Views.Dialogs"
+        mc:Ignorable="d"
+        Title="ModalGameOver" Height="200" Width="600">
+    <Grid Margin="0,10,-0.4,0.4">
+        <Button Content="Reset" Click="Button_Click" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75"/>
+        <TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,0"  TextWrapping="Wrap" Text="GAME OVER" VerticalAlignment="Top" />
+    </Grid>
+</Window>

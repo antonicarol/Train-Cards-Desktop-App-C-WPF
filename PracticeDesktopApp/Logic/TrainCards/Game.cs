@@ -11,6 +11,8 @@ namespace TrainCards
         public Card[] progress;
 
 
+
+
         public Game()
         {
             cards = fillCards();
