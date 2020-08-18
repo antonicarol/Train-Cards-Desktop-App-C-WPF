@@ -12,15 +12,16 @@ namespace PracticeDesktopApp.Logic.HangedMan
         public int progress;
         public string[] words;
         public int hangedMan;
-        public char[] abecedarie;
+        public List<char[]> abecedarie;
         public char[] result;
+
 
         public HangedMan()
         {
             progress = 0;
             hangedMan = 0;
             words = new string[1];
-            words[0] = "house".ToUpper();
+            words = FillWords();
             abecedarie = FillAbecedarie();
         }
 
@@ -29,19 +30,34 @@ namespace PracticeDesktopApp.Logic.HangedMan
             return result;
         }
 
-        private char[] FillAbecedarie()
+        private string[] FillWords()
         {
-            return new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            return new string[] {"database","algorithm","command","cyberbullying", "debugging", "function", "Internet", "iteration",
+                                 "output","parameter","programming","variable","workspace","operand","statement","string","argument","brackets","execute"};
         }
-        public char[] GetAbecedarie()
+
+        private List<char[]> FillAbecedarie()
+        {
+            return new List<char[]>
+            {
+                new char[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',},
+                new char[] { 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' }
+            };
+        }
+
+       
+        
+
+        public List<char[]> GetAbecedarie()
         {
             return abecedarie;
         }
 
         public string GetRandomWord()
         {
-            int index = 0;
-            string word = GetWord(index);
+            Random rnd = new Random();
+            int index = rnd.Next(1, words.Length);
+            string word = GetWord(index).ToUpper();
             progress = word.Length;
 
             result = new char[word.Length];
@@ -61,14 +77,55 @@ namespace PracticeDesktopApp.Logic.HangedMan
         public bool SayCharacter(string letter, string word)
         {
             char[] res = GetResult();
+            var foundIndexes = new List<int>();
             bool b = word.Contains(letter);
             if (b)
             {
-                int index = word.IndexOf(letter);
-                result[index] = letter[0];
+                for (int i = word.IndexOf(letter); i > -1; i = word.IndexOf(letter, i + 1))
+                {
+                    // for loop end when i=-1 ('a' not found)
+                    foundIndexes.Add(i);
+                }
+                for (int i = 0; i < foundIndexes.Count; i++)
+                {
+                    result[foundIndexes[i]] = letter[0];
+                }
+
+
+                //The progres will reach 0 when all the word is completed!
+                progress--;
+                if (progress == 0)
+                {
+                    //It means the game is Won
+
+                }
 
             }
+            else
+            {
+                //The hanged man will start building, it will reach to 5
+                hangedMan++;
+                if (hangedMan == 5)
+                {
+                    //It means the game's lost
+                }
+            }
             return b;
+        }
+
+        public int GetProgress()
+        {
+            return progress;
+        }
+
+        public int GetHangedMan()
+        {
+            return hangedMan;
+        }
+
+        public string GetImgHangedMan()
+        {
+            return "hangedMan" + hangedMan;
         }
     }
 }

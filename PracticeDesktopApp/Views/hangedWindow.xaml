@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeDesktopApp.Views"
         mc:Ignorable="d"
-        Title="hangedWindow" Height="550" Width="1080">
+        Title="hangedWindow" Height="550" Width="800">
     <Grid>
-        <Button x:Name="ShowWord" Content="Start Playing" HorizontalAlignment="Left" Margin="325,150,0,0" VerticalAlignment="Top" Width="135" Click="ShowWord_Click"/>
-        <Label Name="Word" Content="" HorizontalAlignment="Left" Margin="325,220,0,0" VerticalAlignment="Top" Width="175"/>
-        <StackPanel Name="Word_chars" HorizontalAlignment="Left" Height="100" Margin="305,280,0,0" VerticalAlignment="Top" Width="245" Orientation="Horizontal"/>
-        <StackPanel Name="Alphabet" HorizontalAlignment="Center" Height="45" Margin="60,450,48.6,0" VerticalAlignment="Top" Width="965" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="ShowWord" Content="Start Playing" HorizontalAlignment="Left" Margin="170,40,0,0" VerticalAlignment="Top" Width="135" Click="ShowWord_Click"/>
+        <Label Name="Word" Content="" HorizontalAlignment="Left" Margin="155,77,0,0" VerticalAlignment="Top" Width="175"/>
+        <StackPanel Name="Word_chars" HorizontalAlignment="Left" Height="100" Margin="10,115,0,0" VerticalAlignment="Top" Width="390" Orientation="Horizontal">
+           
+        </StackPanel>
+        <StackPanel Name="Alphabet2" HorizontalAlignment="Left" Height="80" Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="460" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
             <StackPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -20,7 +22,24 @@
                 </TransformGroup>
             </StackPanel.RenderTransform>
         </StackPanel>
-        <Label Name="Debug" Content="Label" HorizontalAlignment="Left" Margin="125,310,0,0" VerticalAlignment="Top"/>
+        <StackPanel Name="Alphabet1" HorizontalAlignment="Left" Margin="10,0,0,90.8" Height="80" VerticalAlignment="Bottom" Width="460" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.092"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+        </StackPanel>
+
+        <StackPanel Name="DebugPanel" Visibility="Visible" Width="165" HorizontalAlignment="Right" Margin="0,0,628.6,448.8">
+            <Label Name="Progres_Deb" Content="Progess : " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100"/>
+            <Label Name="HangedMan_Deb" Content="HangedMan : " HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100"/>
+            <Label Name="Word_Deb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="165"></Label>
+        </StackPanel>
+        <Image Name="HangedMan" HorizontalAlignment="Left" Height="370" Margin="539,0,0,0" VerticalAlignment="Top" Width="245"/>
+
 
     </Grid>
 </Window>

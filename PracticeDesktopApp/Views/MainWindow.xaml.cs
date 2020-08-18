@@ -1,4 +1,5 @@
-﻿using PracticeDesktopApp.Views;
+﻿using PracticeDesktopApp.Models;
+using PracticeDesktopApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace PracticeDesktopApp
         public MainWindow()
         {
             InitializeComponent();
+            lblName.Content = "Welcome "+ UserInfo.Name;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,6 +46,31 @@ namespace PracticeDesktopApp
             hangedWindow window = new hangedWindow();
             window.Show();
             Close();
+        }
+
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+            //Open the profile!
+            
+        }
+
+        private void Scores_Click(object sender, RoutedEventArgs e)
+        {
+            //Se scoreboards
+        }
+
+
+        private void PlayTrainCards_Click(object sender, RoutedEventArgs e)
+        {
+            TrainCardWindow TrainCard = new TrainCardWindow();
+            TrainCard.Show();
+
+        }
+
+        private void PlayHangedMan_Click(object sender, RoutedEventArgs e)
+        {
+            hangedWindow HangedMan = new hangedWindow();
+            HangedMan.Show();
         }
     }
 }

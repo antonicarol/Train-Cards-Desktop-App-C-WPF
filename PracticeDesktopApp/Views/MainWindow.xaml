@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeDesktopApp"
+        xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         x:Class="PracticeDesktopApp.MainWindow"
         mc:Ignorable="d"
@@ -14,24 +15,104 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        >
 
-    
 
-    <Grid >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100">
+            </ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450" />
+
         </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0"  Orientation="Horizontal" VerticalAlignment="Top" Width="100" Height="42" Background="DarkSlateBlue" />
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" Width="800" Height="42" Background="DarkSlateBlue" />
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Width="800" Height="40" Background="DarkOrange" />
-        <TextBlock 
-            HorizontalAlignment="Center" 
-            TextWrapping="Wrap" Text="Welcome To The Desktop Games"
-            VerticalAlignment="Center" FontSize="40" Margin="70,100,108.6,316.8" Width="615" />
-        <Button Name="TrainCard" Content="Play Train Card" Width="300" HorizontalAlignment="Center" Margin="240,173,253.6,259.8" Click="Button_Click" />
-        <Button Name="HangedMan" Content="Play Hanged Man" Width="300" HorizontalAlignment="Center" Click="HangedMan_Click"></Button>
+        <Grid Grid.Column="0"  Background="DarkSlateBlue" Width="100" HorizontalAlignment="Left" Margin="0,42,0,78" Height="380" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button  Name="User" Click="User_Click" Height="37" Grid.Column="0" Grid.Row="0" Width="100" Background="Transparent">
+                <Button.Content >
+                    <StackPanel Orientation="Horizontal" >
+                        <fa:ImageAwesome Foreground="White"  Icon="UserCircle"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <Label Foreground="White" HorizontalAlignment="Right" Margin="0,5,0,5" Content="User" VerticalContentAlignment="Center" Height="21"  ></Label>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="Scores" Click="Scores_Click"  Grid.Column="0" Grid.Row="1" Height="37" Width="100" Background="Transparent">
+                <Button.Content >
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Foreground="White"  Margin="0,5,0,5" Icon="Bank" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <Label  Foreground="White" Margin="0,5,0,5" Grid.Column="1" Grid.Row="1" Content="Scores" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="30"></Label>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
 
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10,9.6,9.6,90">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Name="lblName" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Welcome Antoni" FontSize="50" ></Label>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0">
+                    <Label Content="The Card's Train" FontSize="30" HorizontalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Height="61" Margin="2,0,1.6,0">
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" 
+                                   Text="Will you be capable of passing through all the 5 rounds? If you are dont doubt that you'll suffer on this train" />
+                    </StackPanel>
+                    <Button x:Name="PlayTrainCards" Width="200" Click="PlayTrainCards_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="AddressCard"></fa:ImageAwesome>
+                                <Label Content="Play The Card's Train"></Label>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                 </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                    <Label Content="The Hanged Man" FontSize="30" HorizontalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Height="61" Margin="2,0,1.6,0">
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" 
+                                   Text="Try out letters and complete words, dont let that cool guy die because you didn't make it. " />
+                    </StackPanel>
+                    <Button x:Name="PlayHangedMan" Width="200" Click="PlayHangedMan_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:ImageAwesome Icon="Wordpress"></fa:ImageAwesome>
+                                <Label Content="Play The HangedMan"></Label>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
