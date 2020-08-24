@@ -170,11 +170,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\GamesDAO.cs" />
     <Compile Include="Controllers\UsersDAO.cs" />
+    <Compile Include="Logic\3inaRow\Board.cs" />
+    <Compile Include="Logic\3inaRow\IA.cs" />
+    <Compile Include="Logic\3inaRow\Player.cs" />
+    <Compile Include="Logic\3inaRow\ThreeRowGame.cs" />
     <Compile Include="Logic\HangedMan\HangedMan.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Views\Dialogs\ModalGameOver.xaml.cs">
       <DependentUpon>ModalGameOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\Shop\ShopHome.xaml.cs">
+      <DependentUpon>ShopHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\Games\hangedWindow.xaml.cs">
       <DependentUpon>hangedWindow.xaml</DependentUpon>
@@ -188,6 +197,9 @@
     <Compile Include="Views\Modals\ModalRegister.xaml.cs">
       <DependentUpon>ModalRegister.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Windows\Games\RowGame.xaml.cs">
+      <DependentUpon>RowGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\Games\TrainCardWindow.xaml.cs">
       <DependentUpon>TrainCardWindow.xaml</DependentUpon>
     </Compile>
@@ -195,7 +207,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Modals\Shop\ShopHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\Games\hangedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\Games\RowGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

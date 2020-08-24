@@ -83,6 +83,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>FontAwesome.resx</DependentUpon>
     </Compile>
+    <Compile Update="ResourceApp.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourceApp.resx</DependentUpon>
+    </Compile>
     <Compile Update="ResourceCards.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -99,6 +104,10 @@
     <EmbeddedResource Update="FontAwesome.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FontAwesome.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ResourceApp.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceApp.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ResourceCards.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

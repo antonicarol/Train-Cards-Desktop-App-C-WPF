@@ -47,7 +47,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Name="SideBar" Visibility="Hidden"
+        <Grid Name="SideBar" Visibility="Visible"
             Grid.Column="0"  Background="DarkSlateBlue" Width="100" HorizontalAlignment="Left" Margin="0,42,0,78" Height="380" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
             </Grid.ColumnDefinitions>
@@ -66,7 +66,15 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="Scores" Click="Scores_Click"  Grid.Column="0" Grid.Row="1" Height="37" Width="100" Background="Transparent">
+            <Button  Name="Store" Click="Store_Click" Height="37" Grid.Column="0" Grid.Row="1" Width="100" Background="Transparent">
+                <Button.Content >
+                    <StackPanel Orientation="Horizontal" >
+                        <fa:ImageAwesome Foreground="White"  Icon="CartPlus"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <Label Foreground="White" HorizontalAlignment="Right" Margin="0,5,0,5" Content="Shop" VerticalContentAlignment="Center" Height="21"  ></Label>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="Scores" Click="Scores_Click"  Grid.Column="0" Grid.Row="2" Height="37" Width="100" Background="Transparent">
                 <Button.Content >
                     <StackPanel Orientation="Horizontal">
                         <fa:ImageAwesome Foreground="White"  Margin="0,5,0,5" Icon="Bank" VerticalAlignment="Center" HorizontalAlignment="Left" />
@@ -113,19 +121,23 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-                    <Label Content="The Hanged Man" FontSize="30" HorizontalAlignment="Center"/>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Height="61" Margin="2,0,1.6,0">
-                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" 
-                                   Text="Try out letters and complete words, dont let that cool guy die because you didn't make it. " />
-                    </StackPanel>
-                    <Button x:Name="PlayHangedMan" Width="200" Click="PlayHangedMan_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Wordpress"></fa:ImageAwesome>
-                                <Label Content="Play The HangedMan"></Label>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+                    <Label Content="Your Games" FontSize="30" HorizontalAlignment="Right"/>
+
+                    <Grid Name="Display_Gamess"  Height="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    
+                    
+                    
                 </StackPanel>
             </Grid>
         </Grid>

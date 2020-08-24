@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PracticeDesktopApp.Views.Modals"
+        xmlns:local="clr-namespace:PracticeDesktopApp.Views.Modals" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         Title="ModalRegister" Height="450" Width="400">
     
         
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -26,16 +27,25 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-
+            
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <Label Content="Your Email"
                        HorizontalAlignment="Center" FontSize="17"></Label>
-                <TextBox Name="txtEmail" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></TextBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox Name="txtEmail" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></TextBox>
+                </StackPanel>
+                
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <Label Content="Password"
                        HorizontalAlignment="Center" FontSize="17"></Label>
-                <PasswordBox Name="txtPassword" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></PasswordBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <PasswordBox Name="txtPassword" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></PasswordBox>
+                    <materialDesign:PopupBox PlacementMode="LeftAndAlignMiddles">
+                        <Label>Password should have minimum 8 characters including a Capital Letter and a a digit</Label>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+                
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical">
                 <Label Content="Repeat Password"

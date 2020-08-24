@@ -1,7 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
+using PracticeDesktopApp.Controllers;
 using PracticeDesktopApp.Models;
 using PracticeDesktopApp.Views;
 using PracticeDesktopApp.Views.Modals;
+using PracticeDesktopApp.Views.Modals.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,8 @@ namespace PracticeDesktopApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        Game game = new Game();
+        internal bool isShopOpen;
+        private GamesDAO GamesDao;
         public bool isModalOpen = false;
         public bool isRegisterOpen = false;
         public bool isLoginOpen = false;
@@ -33,10 +36,37 @@ namespace PracticeDesktopApp
 
         public MainWindow()
         {
+            GamesDao = new GamesDAO();
             InitializeComponent();
             UpdateUI();
             
-           
+            
+        }
+
+        private void GetAllUserGames()
+        {
+            Display_Gamess.Children.Clear();
+
+            List<Models.Game> allGames = GamesDao.GetUserGames();
+            for(int i = 0; i<allGames.Count; i++)
+            {
+                //GAME ELEMENTS
+                Label lblName = new Label();
+                lblName.Content = allGames[i].Name;
+                Button btnPlay = new Button();
+                btnPlay.Content = "PLAY";
+                btnPlay.HorizontalAlignment = HorizontalAlignment.Right;
+                StackPanel panel = new StackPanel();
+                panel.Orientation = Orientation.Horizontal;
+                panel.HorizontalAlignment = HorizontalAlignment.Center;
+                panel.Children.Add(lblName);
+                panel.Children.Add(btnPlay);
+
+                Grid.SetRow(panel, i);
+                Grid.SetColumn(panel, 0);
+
+                Display_Gamess.Children.Add(panel);
+            }
         }
 
         private void CheckFirstTime()
@@ -52,8 +82,8 @@ namespace PracticeDesktopApp
                 {
                     SetBlurrEffect(this,false);
                 }
-
             }
+            
         }
 
         private void SetBlurrEffect(Window win, bool add)
@@ -69,16 +99,7 @@ namespace PracticeDesktopApp
                 win.Effect = null;
             }
         }
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            TrainCardWindow game = new TrainCardWindow();
-            game.Show();
-            Close();
-        }
-
-       
-
+   
         private void HangedMan_Click(object sender, RoutedEventArgs e)
         {
             hangedWindow window = new hangedWindow();
@@ -122,7 +143,8 @@ namespace PracticeDesktopApp
                 Authorize.Visibility = Visibility.Hidden;
                 SideBar.Visibility = Visibility.Visible;
                 Content.Visibility = Visibility.Visible;
-                
+                GetAllUserGames();
+
             }
         }
 
@@ -155,6 +177,21 @@ namespace PracticeDesktopApp
             if (!isRegisterOpen)
             {
                 SetBlurrEffect(this, false);
+            }
+        }
+
+        private void Store_Click(object sender, RoutedEventArgs e)
+        {
+            //Open up the store
+
+            ShopHome shop = new ShopHome(this);
+            shop.Owner = this;
+            SetBlurrEffect(this, true);
+            shop.ShowDialog();
+            if (!isShopOpen)
+            {
+                SetBlurrEffect(this, false);
+                GetAllUserGames();
             }
         }
     }

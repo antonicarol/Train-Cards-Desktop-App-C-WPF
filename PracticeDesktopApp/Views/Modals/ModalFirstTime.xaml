@@ -28,9 +28,15 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Vertical">
+                
                 <Label Content="Create a Username"
                        HorizontalAlignment="Center" FontSize="17"></Label>
-                <TextBox Name="txtUsername" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></TextBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox Name="txtUsername" Margin="0,10,0,0"  Width="300" HorizontalAlignment="Center"></TextBox>
+                    <Button Name="TogglePopusername" Click="TogglePopusername_Click" Content="Help"></Button>
+                </StackPanel>
+                
+               
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <Label Content="Select your Gender"
@@ -41,12 +47,13 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <RadioButton Margin="0,0,10,0" Grid.Column="0" Content="MALE"></RadioButton>
-                    <RadioButton Margin="0,0,10,0" Grid.Column="1" Content="FEMALE"></RadioButton>
-                    <RadioButton Margin="0,0,10,0" Grid.Column="2" Content="OTHER"></RadioButton>
+                    <RadioButton Name="Radio_Male" Checked="Radio_Male_Checked" Margin="0,0,10,0" Grid.Column="0" Content="MALE"></RadioButton>
+                    <RadioButton Name="Radio_Female" Checked="Radio_Female_Checked" Margin="0,0,10,0" Grid.Column="1" Content="FEMALE"></RadioButton>
+                    <RadioButton Name="Radio_Other" Checked="Radio_Other_Checked" Margin="0,0,10,0" Grid.Column="2" Content="OTHER"></RadioButton>
                 </Grid>
 
             </StackPanel>
+            
             <StackPanel Grid.Row="3" Orientation="Vertical">
             <Label Content="Display your BirthDate"
                        HorizontalAlignment="Center" FontSize="17"></Label>
