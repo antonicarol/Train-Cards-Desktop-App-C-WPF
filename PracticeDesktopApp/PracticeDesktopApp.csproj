@@ -174,11 +174,13 @@
     <Compile Include="Controllers\UsersDAO.cs" />
     <Compile Include="Logic\3inaRow\Board.cs" />
     <Compile Include="Logic\3inaRow\IA.cs" />
-    <Compile Include="Logic\3inaRow\Player.cs" />
     <Compile Include="Logic\3inaRow\ThreeRowGame.cs" />
     <Compile Include="Logic\HangedMan\HangedMan.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Utils\AuthValidation.cs" />
+    <Compile Include="ViewModel\AuthViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="Views\Dialogs\ModalGameOver.xaml.cs">
       <DependentUpon>ModalGameOver.xaml</DependentUpon>
     </Compile>
@@ -188,13 +190,13 @@
     <Compile Include="Views\Windows\Games\hangedWindow.xaml.cs">
       <DependentUpon>hangedWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Modals\ModalFirstTime.xaml.cs">
+    <Compile Include="Views\Modals\Profile\ModalFirstTime.xaml.cs">
       <DependentUpon>ModalFirstTime.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Modals\ModalLogin.xaml.cs">
+    <Compile Include="Views\Modals\Auth\ModalLogin.xaml.cs">
       <DependentUpon>ModalLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Modals\ModalRegister.xaml.cs">
+    <Compile Include="Views\Modals\Auth\ModalRegister.xaml.cs">
       <DependentUpon>ModalRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\Games\RowGame.xaml.cs">
@@ -233,15 +235,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Modals\ModalFirstTime.xaml">
+    <Page Include="Views\Modals\Profile\ModalFirstTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Modals\ModalLogin.xaml">
+    <Page Include="Views\Modals\Auth\ModalLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Modals\ModalRegister.xaml">
+    <Page Include="Views\Modals\Auth\ModalRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,7 +17,6 @@ namespace PracticeDesktopApp.Models
 
         public static List<Game> Games = new List<Game>();
 
-
-        
+        public static float Currency { get; internal set; }
     }
 }

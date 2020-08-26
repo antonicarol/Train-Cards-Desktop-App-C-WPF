@@ -38,9 +38,6 @@ namespace PracticeDesktopApp
         {
             GamesDao = new GamesDAO();
             InitializeComponent();
-            UpdateUI();
-            
-            
         }
 
         private void GetAllUserGames()
@@ -118,10 +115,24 @@ namespace PracticeDesktopApp
             
         }
 
-        internal void UpdateUI()
+        internal void UpdateUI(int type)
         {
-            lblName.Content = "Welcome " + UserInfo.Name;
+            switch (type)
+            {
+                case 0:
+                    lblUsername.Content = UserInfo.Name;
+                    lblCurrency.Content = UserInfo.Currency.ToString() + " $ ";
+                    break;
+
+                case 1:
+                    lblCurrency.Content = UserInfo.Currency.ToString() + " $ ";
+                    break;
+
+            }
+            
         }
+
+      
 
         private void Scores_Click(object sender, RoutedEventArgs e)
         {
@@ -142,7 +153,7 @@ namespace PracticeDesktopApp
             {
                 Authorize.Visibility = Visibility.Hidden;
                 SideBar.Visibility = Visibility.Visible;
-                Content.Visibility = Visibility.Visible;
+                Content_Body.Visibility = Visibility.Visible;
                 GetAllUserGames();
 
             }

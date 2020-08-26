@@ -29,17 +29,22 @@
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0"  Orientation="Horizontal" VerticalAlignment="Top" Width="100" Height="42" Background="DarkSlateBlue" />
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" Width="800" Height="42" Background="DarkSlateBlue">
-            <Label Foreground="White" Name="lblDebug_FirstTime" HorizontalAlignment="Center" Content=""></Label>
+        <StackPanel  Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" Height="42" Background="DarkSlateBlue" Margin="0,0,9.6,0">
+            <Label Foreground="Wheat" Content="" Name="lblUsername" FontSize="30" Margin="10,0,0,0"></Label>
+            <Label Foreground ="Wheat" Name="lblCurrency" FontSize="30" HorizontalAlignment="Right" Margin="380,0,0,0"></Label>
         </StackPanel>
         <Grid Grid.Column="1" Name="Authorize" Visibility="Visible" Margin="0,50,-0.4,80" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="565*"/>
+                <ColumnDefinition Width="129*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
                 <RowDefinition Height="200" />
             </Grid.RowDefinitions>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"
-                Content="Log In or Create account to see the Games"></Label>
-            <StackPanel Grid.Row="1">
+                Content="Log In or Create account to see the Games" Grid.ColumnSpan="2" Margin="61,28,62,28.8"></Label>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.2,0,-0.4">
                 <Button Name="Register" Click="Register_Click"
                         Content="Register"  Width="200" Margin="0,10,0,0" FontSize="20"></Button>
                 <Button Name="Login" Click="Login_Click"
@@ -85,7 +90,7 @@
 
 
         </Grid>
-        <Grid Name="Content" Visibility="Hidden"
+        <Grid Name="Content_Body" Visibility="Hidden"
             Grid.Row="1" Grid.Column="1" Margin="10,9.6,9.6,90">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"></RowDefinition>
@@ -128,16 +133,16 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-                            
+
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                     </Grid>
-                    
-                    
-                    
+
+
+
                 </StackPanel>
             </Grid>
         </Grid>

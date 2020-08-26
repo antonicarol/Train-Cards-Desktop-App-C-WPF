@@ -13,7 +13,6 @@ namespace PracticeDesktopApp.Logic._3inaRow
     {
         public Board boardLogic;
         public int turn;
-        public Player player;
         public IA ai;
         public string winMessage;
         public bool win;
@@ -59,9 +58,9 @@ namespace PracticeDesktopApp.Logic._3inaRow
                 return false;
             }
         }
-        public void IA_Pick(int row, int col)
+        public void IA_Pick()
         {
-            ai.IA_Pick(turn, row, col);
+            ai.IA_Pick(turn);
         }
 
         internal void AiSetBoard(int row, int col)

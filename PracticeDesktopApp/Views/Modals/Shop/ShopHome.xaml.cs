@@ -1,5 +1,6 @@
 ﻿using PracticeDesktopApp.Controllers;
 using PracticeDesktopApp.Models;
+using PracticeDesktopApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
@@ -24,14 +25,15 @@ namespace PracticeDesktopApp.Views.Modals.Shop
     {
         MainWindow window;
         List<Game> allGames;
-        GamesDAO GamesDAO;
+        
+        ShopViewModel shopViewModel;
         public ShopHome(MainWindow win)
         {
             window = win;
             window.isShopOpen = true;
-            GamesDAO = new GamesDAO();
             InitializeComponent();
-            allGames = GamesDAO.GetAllGames();
+            shopViewModel = new ShopViewModel(this);
+            allGames = shopViewModel.GetGames();
             DisplayAllGamesList();
         }
 
@@ -43,17 +45,12 @@ namespace PracticeDesktopApp.Views.Modals.Shop
             {
                 RowDefinition row = new RowDefinition();
                 row.Height = new GridLength(40);
-                
-               
-
+             
                 Label name = new Label();
                 name.Content = allGames[i].Name;
                 name.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetColumn(name, 0);
                 Grid.SetRow(name, i);
-
-                
-                
 
                 Button btn = new Button();
                 btn.Content = "Purchase";
@@ -62,17 +59,10 @@ namespace PracticeDesktopApp.Views.Modals.Shop
                 Grid.SetColumn(btn, 1);
                 Grid.SetRow(btn, i);
 
-
-
                 Games_Shop_Grid.RowDefinitions.Add(row);
-                
-                
-
                 Games_Shop_Grid.Children.Add(btn);
                 Games_Shop_Grid.Children.Add(name);
             }
-
-
         }
 
         private void Purchase_Click(object sender, RoutedEventArgs e)
@@ -81,12 +71,23 @@ namespace PracticeDesktopApp.Views.Modals.Shop
             string name = dataContext.Item1;
             int id = dataContext.Item2;
 
-            GamesDAO.PurchaseGame(name, id);
+            if(shopViewModel.PurchaseGame(name, id))
+            {
+                UpdateUI();
+                MessageBox.Show("Game purchase completed!");
+            }
+        }
+
+        public void UpdateUI()
+        {
+            allGames = shopViewModel.GetAllGamesFromDB();
+            DisplayAllGamesList();
         }
 
         private void CloseModal()
         {
             window.isShopOpen = false;
+            window.UpdateUI(1);
             Close();
         }
 

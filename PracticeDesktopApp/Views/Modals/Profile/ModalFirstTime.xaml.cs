@@ -24,11 +24,9 @@ namespace PracticeDesktopApp.Views.Modals
     public partial class ModalFirstTime : Window
     {
         private MainWindow window;
-        SqlConnection con;
-        SqlCommand cmd;
         UsersDAO usersDAO;
-        static String connectionString = @"Data Source=DESKTOP-5S6R1GD;Initial Catalog=Users;Integrated Security=True";
         string gender;
+
         public ModalFirstTime(MainWindow win)
         {
             InitializeComponent();
@@ -54,7 +52,7 @@ namespace PracticeDesktopApp.Views.Modals
                 {
                     
                     if (usersDAO.FirstTimeDone()) {
-                        window.UpdateUI();
+                        window.UpdateUI(0);
                     }
                     CloseModal();
                 }

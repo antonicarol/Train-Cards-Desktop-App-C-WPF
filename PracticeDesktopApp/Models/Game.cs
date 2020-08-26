@@ -12,11 +12,14 @@ namespace PracticeDesktopApp.Models
         public string Name { get; set; }
         public int Id { get; set; }
         public Image Icon { get; set; }
+        
+        public float Price { get; set; }
 
-        public Game(int id, string name)
+        public Game(int id, string name, float price)
         {
             Id = id;
             Name = name;
+            Price = price;
         }
 
 

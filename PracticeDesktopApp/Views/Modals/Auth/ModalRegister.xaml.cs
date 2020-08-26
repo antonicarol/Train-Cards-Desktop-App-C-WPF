@@ -1,5 +1,6 @@
 ﻿using PracticeDesktopApp.Controllers;
 using PracticeDesktopApp.Models;
+using PracticeDesktopApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -23,51 +24,27 @@ namespace PracticeDesktopApp.Views.Modals
     public partial class ModalRegister : Window
     {
         MainWindow window;
-       
-        UsersDAO userDAO;
+        private AuthViewModel authViewModel;
         
         public ModalRegister(MainWindow win)
         {
             InitializeComponent();
             window = win;
             window.isRegisterOpen = true;
-            userDAO = new UsersDAO();
+            authViewModel = new AuthViewModel(this);
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            String message = "Invalid Credentials";
-            Tuple<bool, string> response;
-            
-            try
+            string email = txtEmail.Text.ToString();
+            string password = txtPassword.Password.ToString();
+            string repPassword = txtRepeatPassword.Password.ToString();
+
+            if (authViewModel.Register(email, password, repPassword))
             {
-                
-         
-
-                string email = txtEmail.Text.ToString();
-                string password = txtPassword.Password.ToString();
-                string repPassword = txtRepeatPassword.Password.ToString();
-
-                response = userDAO.RegisterUser(email, password, repPassword);
-                
-                if (response.Item1)
-                {
-                    CloseModal();
-                    OpenLogInModal();
-                }
-                else
-                    MessageBox.Show(response.Item2, "Info");
-               
-
+                CloseModal();
+                OpenLogInModal();
             }
-            catch (Exception ex)
-            {
-                message = ex.Message.ToString();
-                message = ex.Message.ToString();
-                MessageBox.Show(message, "Info");
-            }
-         
-           
         }
 
         private void OpenLogInModal()

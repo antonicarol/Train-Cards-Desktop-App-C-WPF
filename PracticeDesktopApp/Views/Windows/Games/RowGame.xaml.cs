@@ -22,8 +22,7 @@ namespace PracticeDesktopApp.Views.Windows.Games
     {
         ThreeRowGame game = new ThreeRowGame();
         int[][] board;
-        int selRow;
-        int selCol;
+        
         public RowGame()
         {
             InitializeComponent();
@@ -69,7 +68,7 @@ namespace PracticeDesktopApp.Views.Windows.Games
                 MessageBox.Show("You Won the Game");
             }
             else{
-                game.IA_Pick(position[0], position[1]);
+                game.IA_Pick();
                 FillBoard();
             }
 

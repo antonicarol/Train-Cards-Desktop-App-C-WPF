@@ -39,7 +39,7 @@ namespace PracticeDesktopApp.Controllers
 
             con.Close();
         }
-
+        
         public List<Game> GetAllGames()
         {
 
@@ -57,9 +57,9 @@ namespace PracticeDesktopApp.Controllers
                 if (!IsGameOwned(id))
                 {
                     string name = reader["Name"].ToString();
-                    string price = reader["Price"].ToString();
+                    float price = float.Parse(reader["Price"].ToString());
 
-                    allGames.Add(new Game(id, name));
+                    allGames.Add(new Game(id, name, price));
                    
                 }
 
@@ -98,9 +98,10 @@ namespace PracticeDesktopApp.Controllers
             {
                 string name = reader["Name"].ToString();
                 int id = (int)reader["Game_Id"];
+                
 
-                UserGames.Add(new Game(id, name));
-                UserInfo.Games.Add(new Game(id, name));
+                UserGames.Add(new Game(id, name, 0));
+                UserInfo.Games.Add(new Game(id, name, 0));
             }
             EndDBConnection();
             return UserGames;
@@ -110,6 +111,7 @@ namespace PracticeDesktopApp.Controllers
 
 
         }
+        
 
         internal void PurchaseGame(string name, int id)
         {
@@ -125,7 +127,7 @@ namespace PracticeDesktopApp.Controllers
             if (row != 0)
             {
                 MessageBox.Show("You purchased < " + name + " >  Succesfully");
-                UserInfo.Games.Add(new Game(id, name));
+                UserInfo.Games.Add(new Game(id, name, 0));
             }
             EndDBConnection();
         }

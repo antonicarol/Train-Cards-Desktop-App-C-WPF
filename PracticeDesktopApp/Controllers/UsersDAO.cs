@@ -1,4 +1,5 @@
 ﻿using PracticeDesktopApp.Models;
+using PracticeDesktopApp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -17,9 +18,12 @@ namespace PracticeDesktopApp.Controllers
         SqlDataReader reader;
         static String connectionString;
 
+        
+
         public UsersDAO()
         {
             DBConnection();
+            
         }
 
         private void DBConnection()
@@ -45,9 +49,9 @@ namespace PracticeDesktopApp.Controllers
             bool response = false;
             string message = "Invalid Credentials";
 
-            if (CheckSecurePassword(password))
+            if (AuthValidation.CheckSecurePassword(password))
             {
-                if (password == repPassword)
+                if (AuthValidation.CheckPasswordMatch(password, repPassword))
                 {
                     if (CheckAccountWithEmail(email))
                     {
@@ -61,10 +65,7 @@ namespace PracticeDesktopApp.Controllers
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Password", password);
 
-
-
                         int row = cmd.ExecuteNonQuery();
-
 
                         if (row != 0)
                         {
@@ -84,16 +85,24 @@ namespace PracticeDesktopApp.Controllers
             return new Tuple<bool, string>(response, message);
         }
 
-        private bool CheckSecurePassword(string password)
+
+
+        public bool GamePurchased(int user_Id, Game game)
         {
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMinimum8Chars = new Regex(@".{8,}");
+            con.Open();
+            cmd = new SqlCommand("UPDATE[Users].[dbo].[User] SET Currency = @NewCurrency WHERE Id = @Id;",con);
+            cmd.Parameters.AddWithValue("@Id", user_Id);
+            cmd.Parameters.AddWithValue("@NewCurrency", UserInfo.Currency - game.Price);
 
-            bool isValidated = hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
-
-            return isValidated;
-
+            int row = cmd.ExecuteNonQuery();
+            if(row != 0)
+            {
+                UserInfo.Currency -= game.Price;
+                EndDBConnection();
+                return true;
+            }
+            EndDBConnection();
+            return false;
 
         }
 
@@ -129,13 +138,14 @@ namespace PracticeDesktopApp.Controllers
 
             if (reader.Read())
             {
-               
+                
                 if (reader["Password"].ToString().Equals(password, StringComparison.InvariantCulture))
                 {
 
                     UserInfo.Email = email;
                     UserInfo.FirstTime = (int)reader["FirstTime"];
                     UserInfo.Id = (int)reader["Id"];
+                    UserInfo.Currency = float.Parse(reader["Currency"].ToString());
 
                     response = true;
 
@@ -187,6 +197,7 @@ namespace PracticeDesktopApp.Controllers
             {
                 response = true;
                 UserInfo.FirstTime = 1;
+                UserInfo.Currency = 20;
             }
             else
             {

@@ -1,5 +1,6 @@
 ﻿using PracticeDesktopApp.Controllers;
 using PracticeDesktopApp.Models;
+using PracticeDesktopApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -23,41 +24,26 @@ namespace PracticeDesktopApp.Views.Modals
     public partial class ModalLogin : Window
     {
         MainWindow window;
-     
-        UsersDAO userDAO;
+        AuthViewModel authViewModel;
+
         public ModalLogin(MainWindow win)
         {
             InitializeComponent();
-            userDAO = new UsersDAO();
+            authViewModel = new AuthViewModel(window);
+            
             window = win;
             window.isLoginOpen = true;
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            String message = "Invalid Credentials";
-            Tuple<bool, string> response = new Tuple<bool, string> (false,message);
-            try
+            if (authViewModel.LogIn(txtEmail.Text.ToString(), txtPassword.Password.ToString()))
             {
-                response = userDAO.LoginUser(txtEmail.Text.ToString(), txtPassword.Password.ToString());
-
-                if (response.Item1)
-                {
-                    CloseModal();
-                    window.authorized = true;
-                    window.CheckAuthorized();
-                }
-                else
-                {
-                    MessageBox.Show(response.Item2, "Info");
-                }
-
+                CloseModal();
+                window.authorized = true;
+                window.CheckAuthorized();
             }
-            catch (Exception ex)
-            {
-                message = ex.Message.ToString();
-                message = ex.Message.ToString();
-            }    
+           
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)

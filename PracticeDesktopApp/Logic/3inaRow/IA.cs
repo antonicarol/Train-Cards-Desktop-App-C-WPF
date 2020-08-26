@@ -13,9 +13,7 @@ namespace PracticeDesktopApp.Logic._3inaRow
     class IA
     {
         private ThreeRowGame game;
-        
-        int lastRow;
-        int lastCol;
+
         Board board;
         List<Tuple<int, int>> possibleMoves;
 
@@ -26,7 +24,7 @@ namespace PracticeDesktopApp.Logic._3inaRow
             possibleMoves = new List<Tuple<int, int>>();
         }
 
-        public void IA_Pick(int turn, int pRow, int pCol)
+        public void IA_Pick(int turn)
         {
 
             if (turn == 0)
@@ -34,9 +32,6 @@ namespace PracticeDesktopApp.Logic._3inaRow
                 Random rnd = new Random();
                 int row = rnd.Next(0, 2);
                 int col = rnd.Next(0, 2);
-
-                lastRow = row;
-                lastCol = col;
 
                 game.AiSetBoard(row, col);
             }
@@ -192,7 +187,7 @@ namespace PracticeDesktopApp.Logic._3inaRow
         private bool CheckPlayerRow(int[][] board, int row)
         {
             int count = 0;
-            int[] tempRow = board[row];
+            int[] tempRow;
             for (int col = 0; col < board[row].Length; col++)
             {
                 if (board[row][col] == 1)
